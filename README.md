@@ -1,2 +1,2 @@
 # shortivorytower.github.io
-My Study Notes Page
+My study notes page

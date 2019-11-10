@@ -5,6 +5,10 @@
 <lastmod>2017-04-06T18:32:20+08:00</lastmod>
 </url>
 <url>
+<loc>/matrix-calculus/</loc>
+<lastmod>2017-07-04T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>/conference-on-javascript/</loc>
 <lastmod>2017-09-10T05:00:00+08:00</lastmod>
 </url>
@@ -37,5 +41,8 @@
 </url>
 <url>
 <loc>/tags/</loc>
+</url>
+<url>
+<loc>/page/2/</loc>
 </url>
 </urlset>

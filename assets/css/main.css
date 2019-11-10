@@ -843,8 +843,9 @@ table tbody td {
   font-size: 13px;
 }
 
+
 table tr:nth-child(even) {
-  background: #adbecc;
+  background: #f3f3f3;
 }
 
 table thead {

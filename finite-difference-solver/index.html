@@ -186,8 +186,18 @@ x & \in [x_{min}, x_{max}] \\
   <li><script type="math/tex">Steps_t</script> : Time steps. Number of grid points we have on t-axis including <script type="math/tex">0</script> and <script type="math/tex">T</script>.</li>
   <li><script type="math/tex">\Delta t</script> : Time step size, equals to <script type="math/tex">\frac{T}{Steps_t -1}</script>.</li>
   <li><script type="math/tex">\Delta x</script> : Space step size, equals to <script type="math/tex">\frac{x_{max} - x_{min}}{Steps_x + 1}</script>.</li>
-  <li><script type="math/tex">n = 0,1,2 \dots Steps_t -1</script> : t-axis grid index. When <script type="math/tex">n = 0</script>, <script type="math/tex">t=T</script>, and <script type="math/tex">n = Steps_t-1</script> when <script type="math/tex">t=0</script>.</li>
-  <li><script type="math/tex">j = 0,1,2 \dots Steps_x -1</script> : x-axis grid index. When <script type="math/tex">j = 0</script>, <script type="math/tex">x=x_{min} + \Delta x</script>, and <script type="math/tex">j</script> is equal to <script type="math/tex">Steps_x-1</script> when <script type="math/tex">x = x_{max} - \Delta x</script>.</li>
+  <li><script type="math/tex">n = 0,1,2 \dots Steps_t -1</script> : t-axis grid index.
+    <ul>
+      <li>When <script type="math/tex">n = 0</script>, <script type="math/tex">t=T</script>,</li>
+      <li>When <script type="math/tex">n = Steps_t-1</script>, <script type="math/tex">t=0</script>.</li>
+    </ul>
+  </li>
+  <li><script type="math/tex">j = 0,1,2 \dots Steps_x -1</script> : x-axis grid index.
+    <ul>
+      <li>When <script type="math/tex">j = 0</script>, <script type="math/tex">x=x_{min} + \Delta x</script>,</li>
+      <li>When <script type="math/tex">j = Steps_x-1</script>, <script type="math/tex">x = x_{max} - \Delta x</script>.</li>
+    </ul>
+  </li>
 </ul>
 
 <p>With the Finite Difference Method we are going to solve the grid values of <script type="math/tex">V^n_j</script> which approximates <script type="math/tex">V(t,x)</script> at every grid point. Doing this backward in time all the way we get the solution at time zero. The picture below illustrates the idea of the algorithm.</p>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Simulating Archimedean Copulas - Short Ivory Tower</title>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P3RGW6V');</script>
+<!-- End Google Tag Manager -->
+
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Short Ivory Tower" property="og:site_name">
+  
+    <meta content="Simulating Archimedean Copulas" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="This blog is a place for me to write down technical stuff that I found interesting. 
+" property="og:description">
+  
+  
+    <meta content="/simulating-archimedean-copulas/" property="og:url">
+  
+  
+    <meta content="2019-03-02T00:00:00+08:00" property="article:published_time">
+    <meta content="/about/" property="article:author">
+  
+  
+    <meta content="/assets/img/hk-add-oil.jpg" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="Statistics" property="article:tag">
+    
+    <meta content="Mathematics" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="Simulating Archimedean Copulas">
+  
+  
+    <meta name="twitter:url" content="/simulating-archimedean-copulas/">
+  
+  
+    <meta name="twitter:description" content="This blog is a place for me to write down technical stuff that I found interesting. 
+">
+  
+  
+    <meta name="twitter:image:src" content="/assets/img/hk-add-oil.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3RGW6V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/hk-add-oil.jpg" alt="Short Ivory Tower"></a>
+      </div>
+      <div class="author-name">Short Ivory Tower</div>
+      <p>This blog is a notepad to write down technical stuff that I found interesting.</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+	<!--
+          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+	-->
+        
+        
+	<!--
+          <li><a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+	-->
+        
+        
+          <li class="github"><a href="http://github.com/shortivorytower" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+	<!--
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+	-->
+        
+        
+	<!--
+          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+	-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Short Ivory Tower</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Simulating Archimedean Copulas</h1>
+        <div class="page-date"><span>2019, Mar 02&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+                  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+                          });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<p>When we need to build a statistical model involving more than one random variable, we have to specify a joint distribution of those variables. Let’s say we have two random variables <script type="math/tex">X</script> and <script type="math/tex">Y</script>, very often we would want to know the probability of some particular simultaneous outcome of <script type="math/tex">X</script> and <script type="math/tex">Y</script>. By estimating the joint probability distribution CDF <script type="math/tex">F(x,y) = Pr(X \leq x, Y \leq y)</script> we can then answer those questions.</p>
+
+<p>There are some common parametric multivariate distributions such as <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution">Multivariate Normal Distribution</a>, and <a href="https://en.wikipedia.org/wiki/Multivariate_t-distribution">Multivariate t-Distribution</a>. That would be perfect if our data really follows those multivariate distributions, and we can just simply calibrate the parameters to get the job done. Unfortunately it is much more often that the individual random variables are actually each following different marginal distributions. It is quite uncommon to have that “perfect” scenario.</p>
+
+<p>Many years ago a brilliant statistician <a href="https://en.wikipedia.org/wiki/Abe_Sklar">Abe Skla</a> came up with the theoretical foundation of Copula that decouples the task of estimating individual marginal distribution and the task of estimating their dependencies.</p>
+
+<p>Suppose we have a multivariate CDF <script type="math/tex">F_Y</script> of <script type="math/tex">d</script> dependent random variables <script type="math/tex">\{Y_1, Y_2, \dots, Y_d \}</script>. Each random variable has its own marginal distribution CDF <script type="math/tex">F_{Y_1}, F_{Y_2}, \dots, F_{Y_d}</script>.</p>
+
+<p>Let random variables <script type="math/tex">U_i = F_{Y_i}(Y_i)</script> for <script type="math/tex">i = 1,2,\dots, d</script>. Obviously <script type="math/tex">U_i \sim Uniform(0,1)</script>. Without any proof, just a quick single line of R command to check:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">hist</span><span class="p">(</span><span class="n">pnorm</span><span class="p">(</span><span class="n">rnorm</span><span class="p">(</span><span class="m">10000</span><span class="p">)))</span></code></pre></figure>
+
+<p><img src="/assets/img/simulating-copulas/Rplot.png" alt="Uniform Histogram" class="img-responsive" /></p>
+
+<p>The same goes for other distributions.</p>
+
+<p>The joint distribution CDF <script type="math/tex">C(u_1,u_2,\dots,u_d)</script> for <script type="math/tex">\{U_1,U_2,\dots,U_d\}</script> is a copula.</p>
+
+<p>Here we have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+C(u_1,u_2,\dots,u_d) & = Pr( U_1\leq u_1,U_2\leq u_2,\dots,U_d \leq u_d ) \\
+& = Pr( F_{Y_1}(Y_1)\leq u_1,F_{Y_2}(Y_2)\leq u_2,\dots,F_{Y_d}(Y_d)\leq u_d ) \\
+& = Pr( Y_1 \leq F^{-1}_{Y_1}(u_1), Y_2 \leq F^{-1}_{Y_2}(u_2), \dots, Y_d \leq F^{-1}_{Y_d}(u_d) ) \\
+& = F_Y( F^{-1}_{Y_1}(u_1), F^{-1}_{Y_2}(u_2), \dots, F^{-1}_{Y_d}(u_d) )
+
+\end{align*} %]]></script>
+
+<p>Since <script type="math/tex">u_i = F_{Y_i}(y_i)</script> and obviously <script type="math/tex">y_i = F^{-1}_{Y_i}(u_i)</script>, substituting these to the above result we have the <a href="http://mathworld.wolfram.com/SklarsTheorem.html">Sklar’s Theorem</a>.</p>
+
+<script type="math/tex; mode=display">F_Y(y_1, y_2,\dots,y_d) = C(F_{Y_1}(y_1), F_{Y_2}(y_2), \dots, F_{Y_d}(y_d))</script>
+
+<p>The equation above states that if we have estimated a copula <script type="math/tex">C</script>, and each individual marginal distribution <script type="math/tex">F_{Y_i}</script>, we would have estimated the joint distribution. That makes a huge difference for people who need to estimate multivariate distributions. There are many univariate distributions we can choose to fit a single random variable, and at the end all we need is to find a copula to link them up modelling their dependencies.</p>
+
+<p>Also it is worth to note that if we have a Copula <script type="math/tex">C(u_1,u_2,\dots, u_d)</script>, partial differentiating that will get its density,</p>
+
+<script type="math/tex; mode=display">c(u_1,u_2,\dots,u_d) = \frac{\partial^d}{\partial u_1 \partial u_2 \dots \partial u_d} C(u_1,u_2,\dots, u_d)</script>
+
+<p>and the joint distribution PDF <script type="math/tex">f_Y(y_1,y_2,\dots,y_d)</script> would then be,</p>
+
+<script type="math/tex; mode=display">f_Y(y_1,y_2,\dots,y_d) =  f_{Y_1}(y_1) f_{Y_2}(y_2) \dots f_{Y_d}(y_d) c(F_{Y_1}(y_1),F_{Y_2}(y_2),\dots,F_{Y_d}(y_d))</script>
+
+<p>There are many parametric copulas that are out of the box ready to use. Especially there is a collections of copulas called <strong>Archimedean Copulas</strong>, which takes the form like this:</p>
+
+<script type="math/tex; mode=display">C(u_1,u_2,\dots,u_d) = \varphi^{-1}(\varphi(u_1) + \varphi(u_2) + \dots + \varphi(u_d))</script>
+
+<p>Where <script type="math/tex">\varphi(u)</script> is the generator function of the copula with its inverted function <script type="math/tex">\varphi^{-1}(t)</script>, satisfying certain conditions,</p>
+
+<ul>
+  <li><script type="math/tex">\varphi(u)</script> is strictly decreasing convex function mapping from <script type="math/tex">[0,1]</script> to <script type="math/tex">[0, \infty]</script>.</li>
+  <li><script type="math/tex">\varphi(0) = \infty</script> and <script type="math/tex">\varphi(1) = 0</script></li>
+</ul>
+
+<p>For my personal understanding of the subject, it would be great if I can start with easier stuff let’s say simulating bivariate Archimedean Copulas using some simple python code. I know there are many good R and Python packages for applications but for learning I want to learn by coding some draft myself.</p>
+
+<p>It turns out that some Copulas are just trivial to be simulated while some others requires more knowledge to do that.</p>
+
+<h2 id="clayton-copula">Clayton Copula</h2>
+
+<p>The generator function is  <script type="math/tex">\varphi_{Cl}(u \vert \theta) = \frac{1}{\theta}(u^{-\theta} -1)</script> and the inverted generator function <script type="math/tex">\varphi^{-1}_{Cl}(y \vert \theta)</script> of Clayton Copula is</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+y = \varphi_{Cl}(u \vert \theta) & = \frac{1}{\theta}(u^{-\theta} -1) \\
+
+\theta y & = u^{-\theta} -1 \\
+
+u & = (\theta y + 1)^{\frac{-1}{\theta}} \\
+
+\varphi^{-1}_{Cl}(y \vert \theta) & = (\theta y + 1)^{\frac{-1}{\theta}}
+
+\end{align*} %]]></script>
+
+<p>The Clayton Copula is</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+C_{Cl}(u, v \vert \theta) & = \varphi^{-1}_{Cl}( \varphi_{Cl}(u \vert \theta) + \varphi_{Cl}(v \vert \theta) \vert \theta) \\
+
+&= \bigg[ \theta \Big[ \frac{1}{\theta} (u^{-\theta} -1) + \frac{1}{\theta}(v^{-\theta} -1) \Big] + 1 \bigg]^{\frac{-1}{\theta}} \\
+
+&= ( u^{-\theta} + v^{-\theta} -1)^{\frac{-1}{\theta}}
+
+\end{align*} %]]></script>
+
+<p>We can just use simple conditional distribution approach to simulate the Clayton Copula. The idea is that given the random variable <script type="math/tex">U</script> is having some simulated value <script type="math/tex">u</script>, we can find a specific conditional distribution <script type="math/tex">c_u(v \vert \theta) = Pr(V \leq v \vert U=u, \theta)</script>. Then we can draw a random variable from this <script type="math/tex">c_u(v \vert \theta)</script> and the result pair <script type="math/tex">(u, v)</script> would follow the Copula.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+c_u(v \vert \theta) = Pr(V \leq v \vert U=u , \theta) & = \lim_{\Delta u \to 0} \frac{C_{Cl}(u+ \Delta u, v \vert \theta) - C_{Cl}(u,v \vert \theta)}{\Delta u} \\
+
+& = \frac{ \partial C_{Cl}(u,v \vert \theta)}{\partial u} \\
+
+& = \frac{\partial}{\partial u} ( u^{-\theta} + v^{-\theta} -1 )^{\frac{-1}{\theta}} \\
+
+&= u^{-(\theta +1)}(u^{-\theta} + v^{-\theta} -1)^{\frac{-(\theta+1)}{\theta}} \\
+
+\end{align*} %]]></script>
+
+<p>Let <script type="math/tex">c_u(v \vert \theta) =t</script>, computing its inverted function,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+c^{-1}_u(t \vert \theta) = v &= \bigg[ u^{-\theta} (t^{\frac{-\theta}{\theta+1}} -1) + 1 \bigg]^{\frac{-1}{\theta}} \\
+
+\end{align*} %]]></script>
+
+<p>I have implemented this simple simulation algorithm below. First we generate two independent <script type="math/tex">Uniform(0,1)</script> random values <script type="math/tex">u</script> and <script type="math/tex">t</script>, and then we put those two values and theta into <script type="math/tex">c^{-1}_u(t \vert \theta)</script> and take the result is <script type="math/tex">v</script>. The pair <script type="math/tex">(u,v)</script> is the simulation result we want.</p>
+
+<noscript><pre>400: Invalid request
+</pre></noscript>
+<script src="https://gist.github.com/322fed445dcb1f3c5e2f8e0d21e795bc.js"> </script>
+
+<p>And the result plots:</p>
+
+<p><img src="/assets/img/simulating-copulas/Clayton_Sim.png" alt="Clayton Simulation" class="img-responsive" /></p>
+
+<h2 id="frank-copula">Frank Copula</h2>
+
+<p>We take the same approach for Frank Copula. Its generator function is <script type="math/tex">\varphi_{Fr}(u \vert \theta) = -\log \frac{e^{-\theta u} -1}{e^{-\theta} -1}</script>, and its inversion is <script type="math/tex">\varphi^{-1}_{Fr}(y \vert \theta) = \frac{-1}{\theta} \log \Big[ e^{-y}(e^{-\theta} -1) + 1 \Big]</script>.</p>
+
+<p>The CDF is</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+C_{Fr}(u,v \vert \theta) & = \frac{-1}{\theta} \log \Big[ \frac{( e^{-\theta u} -1 ) ( e^{-\theta v} -1 )}{e^{-\theta}-1} + 1 \Big] \\
+
+\end{align*} %]]></script>
+
+<p>Differentiate the CDF with respect to <script type="math/tex">u</script> and its inverse <script type="math/tex">c^{-1}_u(t \vert \theta)</script> is</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+c^{-1}_u(t \vert \theta) & = \frac{-1}{\theta} \log \Big[ \frac{(t-1) e^{-\theta u} - t e^{-\theta}}{ (t-1) e^{-\theta u}-t} \Big] \\
+
+\end{align*} %]]></script>
+
+<p>Frank Copula simulation code:</p>
+
+<noscript><pre>400: Invalid request
+</pre></noscript>
+<script src="https://gist.github.com/8583b7cf5a5af660683400ad679227d0.js"> </script>
+
+<p>Simulated Frank Copula result plots:</p>
+
+<p><img src="/assets/img/simulating-copulas/Frank_Sim.png" alt="Frank Simulation" class="img-responsive" /></p>
+
+<h2 id="gumbel-copula">Gumbel Copula</h2>
+
+<p>For Gumbel Copula, the generator function is <script type="math/tex">\varphi_{Gu}(u \vert \theta) = (-\log u)^{\theta}</script>, and its inversion is <script type="math/tex">\varphi^{-1}_{Gu}(y \vert \theta) = e^{-y^{\frac{1}{\theta}}}</script>.</p>
+
+<p>The CDF is</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+C_{Gu}(u,v \vert \theta) & = e^{-\Big[ (-\log u)^{\theta} + (-\log v)^{\theta} \Big]^{\frac{1}{\theta}}} \\
+
+\end{align*} %]]></script>
+
+<p>Now here is a problem, the derivative of <script type="math/tex">C_{Gu}</script> with respect to <script type="math/tex">u</script> is very complex and cannot be inverted even numerically as we can see below.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+\frac{\partial C_{Gu}}{\partial u} & = 
+\frac{1}{u} e^{-\Big[ (- \log u)^{\theta} + (- \log v)^{\theta} \Big]^{\frac{1}{\theta}}} (- \log u)^{\theta -1}
+\Big[ (- \log u)^{\theta} + (- \log v)^{\theta} \Big]^{\frac{1-\theta}{\theta}}
+\\
+
+\end{align*} %]]></script>
+
+<p>Referring to the chapter 4 of the book <a href="https://www.springer.com/gp/book/9780387286594">An Introduction to Copulas</a>, there is an alternative algorithm to generate Archimedean Copulas that we can use here.</p>
+
+<p>Given an Archimedean Copula <script type="math/tex">C</script>, first let <script type="math/tex">K_C(r)</script> be the C-measure of the set <script type="math/tex">\Big\{ (u,v) \in \mathbb{I}^2 \vert C(u,v) \leq r \Big\}</script>. For any <script type="math/tex">r \in \mathbb{I}</script>,</p>
+
+<p><script type="math/tex">K_C(r) = r - \frac{\varphi(r)}{ \varphi^{\prime} (r^{+})}</script>
+where <script type="math/tex">\varphi^{\prime} (r^{+})</script> is the right derivative of <script type="math/tex">\varphi</script> at <script type="math/tex">r</script>.</p>
+
+<p>The algorithm:</p>
+
+<ol>
+  <li>Generate two independent <script type="math/tex">Uniform(0,1)</script> random values <script type="math/tex">s</script> and <script type="math/tex">t</script>.</li>
+  <li>Compute <script type="math/tex">w = K^{-1}_C(t)</script>.</li>
+  <li>Compute <script type="math/tex">u = \varphi^{-1}(s \varphi(w))</script>.</li>
+  <li>Compute <script type="math/tex">v = \varphi^{-1}((1-s) \varphi(w))</script>.</li>
+  <li>The pair <script type="math/tex">(u,v)</script> follows the target Archimedean Copula.</li>
+</ol>
+
+<p>Now let’s try this with Gumbel generator function <script type="math/tex">\varphi_{Gu}(u \vert \theta) = (- \log u)^{\theta}</script>,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+\varphi^{\prime}_{Gu}(u \vert \theta) & = \frac{ \partial}{\partial u} \Big[ (- \log u)^{\theta} \Big] \\
+
+& = \frac{-\theta(-\log u)^{\theta-1}}{u} \\
+\end{align*} %]]></script>
+
+<p>Since the function <script type="math/tex">\varphi^{\prime}_{Gu}(u \vert \theta)</script> is continuous for <script type="math/tex">u \in (0, 1]</script> and <script type="math/tex">\theta \geq 1</script>, <script type="math/tex">\varphi^{\prime}_{Gu}(u^{+} \vert \theta)= \varphi^{\prime}_{Gu}(u \vert \theta)</script></p>
+
+<p>We have,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+
+K_{C_{Gu}}(r \vert \theta) & = r - \frac{\varphi_{Gu}(r \vert \theta)}{\varphi^{\prime}_{Gu}(r^{+} \vert \theta)} \\
+& = r - \frac{\varphi_{Gu}(r \vert \theta)}{\varphi^{\prime}_{Gu}(r \vert \theta)} \\
+& = r - \frac{r \log r}{\theta} \\
+
+\end{align*} %]]></script>
+
+<p>Now once again the function inverse <script type="math/tex">K^{-1}_{C_{Gu}}(\cdot \vert \theta)</script> does not have a close form solution but solving it numerically is far more manageable than the <script type="math/tex">\frac{\partial C_{Gu}}{\partial u}</script> above.</p>
+
+<p>A simple implementation of the algorithm,</p>
+
+<noscript><pre>400: Invalid request
+</pre></noscript>
+<script src="https://gist.github.com/fd7ac2323b976e5e88e5690a1a30aab7.js"> </script>
+
+<p>Simulated Gumbel Copula result plots:</p>
+
+<p><img src="/assets/img/simulating-copulas/Gumbel_Sim.png" alt="Gumbel Simulation" class="img-responsive" /></p>
+
+<p>The output looks correct.</p>
+
+<h3 id="c-measure">C-Measure</h3>
+
+<p>To me the most confusing part in the algorithm above is the <strong>C-measure</strong> of the set <script type="math/tex">\Big\{ (u,v) \in \mathbb{I}^2 \vert C(u,v) \leq r \Big\}</script>. What is C-measure?</p>
+
+<p>I am lazy and haven’t worked out all the geometrical proofs in the book. I just trust the result as is. But to understand what is that “C-measure of the set” we first need to understand a concept called the <strong>level curve</strong> of a Copula <script type="math/tex">C(u,v)</script>.</p>
+
+<p>The <script type="math/tex">t</script> level curve is the set of all <script type="math/tex">(u,v)</script> combinations such that <script type="math/tex">C(u,v) = t</script>. Imagine the 3D surface plot of a copula CDF <script type="math/tex">C(u,v)</script> as a mountain in 3D shape. The “mountain” is higher as we have larger <script type="math/tex">u</script> and <script type="math/tex">v</script>. The level curve are the coordinates of <script type="math/tex">(u,v)</script> that the height outputs by <script type="math/tex">C(u,v)</script> is <script type="math/tex">t</script> (i.e. the <a href="https://gisgeography.com/contour-lines-topographic-map/">contour line</a>. Here I just paste the level curve formula from the book. For a given <script type="math/tex">u</script>, the corresponding <script type="math/tex">v</script> value of the level curve is,</p>
+
+<script type="math/tex; mode=display">v = L_t(u) = \varphi^{-1}(\varphi(t) - \varphi(u)) \\</script>
+
+<p>The level curve plotting code for Clayton, Frank, and Gumbel Copulas with <script type="math/tex">\theta = 2</script> and selected <script type="math/tex">t</script> values from 0.1 to 1.</p>
+
+<noscript><pre>400: Invalid request
+</pre></noscript>
+<script src="https://gist.github.com/52a3eb7dcea048f82d58cbce1c408f40.js"> </script>
+
+<p><img src="/assets/img/simulating-copulas/level_curve.png" alt="Level Curve" class="img-responsive" /></p>
+
+<p>The C-measure is actually the probability measure given by the Copula CDF <script type="math/tex">C(u,v)</script>. Now the term <strong>probability measure</strong> is quite an abstract probability concept. I view it as someone (i.e. some <script type="math/tex">C(u,v)</script>) that <em>measures the chance of some event</em> we interested about, and that “measurement output” is the probability measure.</p>
+
+<p>For example this statement:</p>
+
+<p><script type="math/tex">K_C(r)</script> is the C-measure of the set <script type="math/tex">\Big\{ (u,v) \in \mathbb{I}^2 \vert C(u,v) \leq r \Big\}</script>.</p>
+
+<p>It is actually saying that if I randomly generating some <script type="math/tex">u</script> and <script type="math/tex">v</script> from the Copula <script type="math/tex">C</script>, <script type="math/tex">K_C(r)</script> is the probability that <script type="math/tex">C(u,v) \leq r</script>. Geometrically speaking, it is the CDF “volume” (i.e. the probability) that is outside  the level curve (i.e. left/bottom side of the level curve).</p>
+
+<p>To verify what I am saying here, I implemented the code below.</p>
+
+<ol>
+  <li>Compute the Gumbel theoretical <script type="math/tex">K_C(r)</script></li>
+  <li>Define the Gumbel level curve</li>
+  <li>Simulated a whole lot of <script type="math/tex">(u,v)</script> points from the Gumbel Copula</li>
+  <li>Count the number of <script type="math/tex">(u,v)</script> pairs that falls outside the level curve, and estimated its probability</li>
+</ol>
+
+<noscript><pre>400: Invalid request
+</pre></noscript>
+<script src="https://gist.github.com/5319d08928516fa2a3eedf377b6e7902.js"> </script>
+
+<p>Running the code gives these lines and agrees with what I’ve written above.</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">theta = 3.0, t = 0.33,  Theoretical Gumbel C-Measure = 0.45195288869737726
+C(u,v)&lt;=0.33 : hit count=225995 out of 500000
+Simulated C-Measure = 0.45199</code></pre></figure>
+
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Simulating Archimedean Copulas&url=/simulating-archimedean-copulas/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=/simulating-archimedean-copulas/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=/simulating-archimedean-copulas/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#Statistics" class="tag">&#35; Statistics</a>
+          
+            <a href="/tags#Mathematics" class="tag">&#35; Mathematics</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//shortivorytower.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

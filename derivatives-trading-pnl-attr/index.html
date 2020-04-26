@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </section> <!-- End Section Contact -->
     <div class="copyright">
-      <p>2019 &copy; Short Ivory Tower</p>
+      <p>2020 &copy; Short Ivory Tower</p>
     </div>
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
@@ -152,12 +152,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </header>
       <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-                  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-                          });
+                  tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']], 
+                    displayMath: [ ['$$','$$'], ['\[','\]'] ],
+                    processEnvironments: true
+                  }
+                });
 </script>
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!--
+  >
+-->
 
 <p>When trading derivatives products such as options in financial market, we may want to understand what risk factors attributed to the profit and loss (PnL) each day. I know there are two ways to do this. The first one is what I call “Recalc PnL attribution” - by swapping market data between two days, re-price the instrument, and check the position value changes. For example, If you have a call option yesterday worth 1.4 at close and today it worth 2.5 at close (i.e. PnL = 1.1) , you can price with the yesterday closing price and then with that today. Let’s say you see the price changed from 1.4 to 1.9 with just closing price change you can treat that 0.5 out of your 1.1 PnL is attributed by underlying spot change.</p>
 
@@ -215,8 +223,7 @@ PnL & = Delta \times Spot Change \\
 
 <p>Suppose we have a long position of TOPIX Index Call option expiring on 2019-1-11, strike at 1400. I assume the Japan Risk Free Rate remains static at -0.118% and I am picking <script type="math/tex">t-1</script> to be 2018-12-20, and <script type="math/tex">t</script> to be 2018-12-21. The underlying closing prices were 1517.16 and 1488.19 respectively. The call option prices at market close on the two days were 121 and 95.5 respectively. I backed out the implied volatility using those basic market data. In my code I only use simple European options and Black Scholes model since the library computes all greeks without requiring any additional work. The same method can still be applied to other products and more sophisticated models as long as it outputs the corresponding fair values and greeks.</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/04db2a5019282236c4f46bf1b52430c7.js"> </script>
 
 <p>The small piece of code above would output:</p>

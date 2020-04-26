@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </section> <!-- End Section Contact -->
     <div class="copyright">
-      <p>2019 &copy; Short Ivory Tower</p>
+      <p>2020 &copy; Short Ivory Tower</p>
     </div>
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
@@ -152,12 +152,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </header>
       <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-                  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-                          });
+                  tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']], 
+                    displayMath: [ ['$$','$$'], ['\[','\]'] ],
+                    processEnvironments: true
+                  }
+                });
 </script>
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!--
+  >
+-->
 
 <p>When we need to build a statistical model involving more than one random variable, we have to specify a joint distribution of those variables. Let’s say we have two random variables <script type="math/tex">X</script> and <script type="math/tex">Y</script>, very often we would want to know the probability of some particular simultaneous outcome of <script type="math/tex">X</script> and <script type="math/tex">Y</script>. By estimating the joint probability distribution CDF <script type="math/tex">F(x,y) = Pr(X \leq x, Y \leq y)</script> we can then answer those questions.</p>
 
@@ -273,8 +281,7 @@ c^{-1}_u(t \vert \theta) = v &= \bigg[ u^{-\theta} (t^{\frac{-\theta}{\theta+1}}
 
 <p>I have implemented this simple simulation algorithm below. First we generate two independent <script type="math/tex">Uniform(0,1)</script> random values <script type="math/tex">u</script> and <script type="math/tex">t</script>, and then we put those two values and theta into <script type="math/tex">c^{-1}_u(t \vert \theta)</script> and take the result is <script type="math/tex">v</script>. The pair <script type="math/tex">(u,v)</script> is the simulation result we want.</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/322fed445dcb1f3c5e2f8e0d21e795bc.js"> </script>
 
 <p>And the result plots:</p>
@@ -304,8 +311,7 @@ c^{-1}_u(t \vert \theta) & = \frac{-1}{\theta} \log \Big[ \frac{(t-1) e^{-\theta
 
 <p>Frank Copula simulation code:</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/8583b7cf5a5af660683400ad679227d0.js"> </script>
 
 <p>Simulated Frank Copula result plots:</p>
@@ -380,8 +386,7 @@ K_{C_{Gu}}(r \vert \theta) & = r - \frac{\varphi_{Gu}(r \vert \theta)}{\varphi^{
 
 <p>A simple implementation of the algorithm,</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/fd7ac2323b976e5e88e5690a1a30aab7.js"> </script>
 
 <p>Simulated Gumbel Copula result plots:</p>
@@ -402,8 +407,7 @@ K_{C_{Gu}}(r \vert \theta) & = r - \frac{\varphi_{Gu}(r \vert \theta)}{\varphi^{
 
 <p>The level curve plotting code for Clayton, Frank, and Gumbel Copulas with <script type="math/tex">\theta = 2</script> and selected <script type="math/tex">t</script> values from 0.1 to 1.</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/52a3eb7dcea048f82d58cbce1c408f40.js"> </script>
 
 <p><img src="/assets/img/simulating-copulas/level_curve.png" alt="Level Curve" class="img-responsive" /></p>
@@ -425,8 +429,7 @@ K_{C_{Gu}}(r \vert \theta) & = r - \frac{\varphi_{Gu}(r \vert \theta)}{\varphi^{
   <li>Count the number of <script type="math/tex">(u,v)</script> pairs that falls outside the level curve, and estimated its probability</li>
 </ol>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/5319d08928516fa2a3eedf377b6e7902.js"> </script>
 
 <p>Running the code gives these lines and agrees with what I’ve written above.</p>

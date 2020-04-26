@@ -134,7 +134,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </section> <!-- End Section Contact -->
     <div class="copyright">
-      <p>2019 &copy; Short Ivory Tower</p>
+      <p>2020 &copy; Short Ivory Tower</p>
     </div>
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
@@ -150,12 +150,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </header>
       <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-                  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-                          });
+                  tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']], 
+                    displayMath: [ ['$$','$$'], ['\[','\]'] ],
+                    processEnvironments: true
+                  }
+                });
 </script>
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!--
+  >
+-->
 
 <p>I am reading an <a href="http://www.springer.com/us/book/9783764372309">Extreme Value Analysis</a> book. The first topic is understanding the distribution of the number of exceedances. I tried implementing some python scripts to help reading the book. Even though it is just elementary statistics, the exercise provides some insight to me.</p>
 
@@ -184,8 +192,7 @@ p  = \Pr (X \gt u) \\
 
 <p>Here let’s plot the two PMFs of <script type="math/tex">n = 200</script> trials on <script type="math/tex">X \sim \Gamma(2.5, 1)</script> with a threshold <script type="math/tex">u = 6.5</script>,</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/d4991aa26433da3f82b4b532d3ac13b8.js"> </script>
 
 <p><img src="/assets/img/extreme-value-theory/evt-figure-1.png" alt="Figure 1" class="img-responsive" /></p>
@@ -215,8 +222,7 @@ u_T = F^{-1}\Big(1 - \frac{1}{T}\Big) \\
 
 <p>The plot of the T-Year Level <script type="math/tex">u_T</script> against the number of observations <script type="math/tex">T</script>,</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/e6c542af666b07428c81bb9a88be751d.js"> </script>
 
 <p><img src="/assets/img/extreme-value-theory/evt-figure-2.png" alt="Figure 2" class="img-responsive" /></p>

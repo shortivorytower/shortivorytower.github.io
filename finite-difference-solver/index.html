@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </section> <!-- End Section Contact -->
     <div class="copyright">
-      <p>2019 &copy; Short Ivory Tower</p>
+      <p>2020 &copy; Short Ivory Tower</p>
     </div>
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
@@ -152,12 +152,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </header>
       <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-                  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-                          });
+                  tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']], 
+                    displayMath: [ ['$$','$$'], ['\[','\]'] ],
+                    processEnvironments: true
+                  }
+                });
 </script>
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!--
+  >
+-->
 
 <p>I have a finance related idea which I want to speed up the program by replacing the simulation component with a PDE. I need to solve a PDE that agrees with the <a href="https://en.wikipedia.org/wiki/Feynman%E2%80%93Kac_formula">Feynman-Kac formula</a>.</p>
 

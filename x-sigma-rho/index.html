@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </section> <!-- End Section Contact -->
     <div class="copyright">
-      <p>2019 &copy; Short Ivory Tower</p>
+      <p>2020 &copy; Short Ivory Tower</p>
     </div>
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
@@ -152,12 +152,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </header>
       <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-                  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-                          });
+                  tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']], 
+                    displayMath: [ ['$$','$$'], ['\[','\]'] ],
+                    processEnvironments: true
+                  }
+                });
 </script>
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!--
+  >
+-->
 
 <p>Traditionally in finance the word “risk” means the standard deviation of a portfolio return, which usually consists of risky assets (i.e. equity positions) that “classically” assumed normally distributed returns.</p>
 
@@ -506,26 +514,22 @@ Var(R_p) &= \mathbf{x}^T \mathbf{C} \mathbf{x} + \mathbf{w}^T \mathbf{Q} \mathbf
   <li>The correlations of the factor returns</li>
 </ul>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/e80be981510bcefbfa2df8554f53e1f6.js"> </script>
 
 <p>Then we implement a function that reads the raw data from CSV files, and use simple linear regression to estimate those factor loadings/risks/correlations.</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/b8c8d7f750b540937d198a972ceeae56.js"> </script>
 
 <p>The result of the function above is the FactorModel object which will then be used to compute the portfolio total risk, and the X Sigma Rho decomposition in the next function.</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/dbb41143e190c694c909a048a92b1b66.js"> </script>
 
 <p>Let’s say we have 70% of our capital put on HSBC Stock (0005.HK) and 30% on Zijin Mining (2899.HK). Running these pieces of code altogether along with the data collected, it outputs the following analysis:</p>
 
-<noscript><pre>400: Invalid request
-</pre></noscript>
+<noscript><pre>400: Invalid request</pre></noscript>
 <script src="https://gist.github.com/fb9ef1cc737833ebca87e7ef556042eb.js"> </script>
 
 <p>Here I am not doing any serious linear regression. I didn’t test the significance of the coefficients. All I want to do is just get whatever factor loadings in order to try the X-Sigma-Rho decomposition.</p>

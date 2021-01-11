@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/matrix-calculus/</loc>
-<lastmod>2017-07-04T00:00:00+08:00</lastmod>
-</url>
-<url>
-<loc>/distribution-of-the-number-of-exceedances/</loc>
-<lastmod>2018-03-16T00:00:00+08:00</lastmod>
-</url>
-<url>
-<loc>/derivatives-trading-pnl-attr/</loc>
-<lastmod>2018-12-26T00:00:00+08:00</lastmod>
-</url>
-<url>
-<loc>/finite-difference-solver/</loc>
-<lastmod>2019-01-12T00:00:00+08:00</lastmod>
-</url>
-<url>
-<loc>/simulating-archimedean-copulas/</loc>
-<lastmod>2019-03-02T00:00:00+08:00</lastmod>
-</url>
-<url>
-<loc>/about-principal-components-analysis/</loc>
-<lastmod>2020-09-13T00:00:00+08:00</lastmod>
-</url>
-<url>
 <loc>/</loc>
 </url>
 <url>
